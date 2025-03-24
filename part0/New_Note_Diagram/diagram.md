@@ -22,13 +22,13 @@ sequenceDiagram
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate server
-    server-->browser: the JavaScript file
+    server-->>browser: the JavaScript file
     deactivate server
     Note right of browser: the browser execute the JavaScript file that trigger a new GET request for the JSON data
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->browser: the JSON data as a string: [{"content":"Warriors!!!!!","date":"2025-03-23T23:05:10.435Z"},...]
+    server-->>browser: the JSON data as a string: [{"content":"Warriors!!!!!","date":"2025-03-23T23:05:10.435Z"},...]
     deactivate server
     Note right of browser: the browser execute the callback function that parse the JSON string and render the notes
 ```
