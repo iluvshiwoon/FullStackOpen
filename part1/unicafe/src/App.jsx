@@ -1,37 +1,27 @@
 import { useState } from 'react'
 
-const Header = ({text}) => <h1>{text}</h1>
-
-const Stat = ({name, value}) => <div>{name} {value}</div>
-
-const Percent = ({name, value}) => <div>{name} {value} %</div>
-
 const App = () => {
-  // save clicks of each button to its own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-
-    const handleClick = (value,setValue) => setValue(value + 1)
-    const calcTotal = () => good + neutral + bad
-    const total = calcTotal()
+    const [good, setGood] = useState(0)
+    const [neutral, setNeutral] = useState(0)
+    const [bad, setBad] = useState(0)
+    const total = good + neutral + bad
   return (
     <div>
-            <Header text="give feedback" />
-            <button onClick={() => handleClick(good,setGood)}>good</button>
-            <button onClick={() => handleClick(neutral,setNeutral)}>neutral</button>
-            <button onClick={() => handleClick(bad,setBad)}>bad</button>
-            <Header text="statistics" /> 
+            <h1>give feedback</h1>
+            <button onClick={() => setGood(good + 1)}>good</button>
+            <button onClick={() => setNeutral(neutral + 1)}>neutral</button>
+            <button onClick={() => setBad(bad + 1)}>bad</button>
+            <h1>statistics</h1>
             {total === 0 ? 
                 <div>No feedbacks</div>
                 : (
                     <> 
-                        <Stat name="good" value={good} />
-                        <Stat name="neutral" value={neutral} />
-                        <Stat name="bad" value={bad} />
-                        <Stat name="all" value={bad + neutral + good} />
-                        <Stat name="average" value={(good - bad)/total} />
-                        <Percent name="positive" value={good*100/total} />
+                        <div>good {good}</div>
+                        <div>neutral {neutral}</div>
+                        <div>bad {bad}</div>
+                        <div>all {total}</div>
+                        <div>average {(good - bad)/total}</div>
+                        <div>positive {good*100/total} %</div>
                     </>
                     )
             }
