@@ -1,16 +1,18 @@
 import { useState } from 'react'
 
-const StatisticLine = ({text, value}) => <div>{text} {value}</div>
+const StatisticLine = ({text, value}) => <tr><td>{text} {value}</td></tr>
 
 const Statistics = ({good, total, ...props}) =>
-    <>
-        <StatisticLine text="good" value={good} />
-        <StatisticLine text="neutral" value={props.neutral} />
-        <StatisticLine text="bad" value={props.bad} />
-        <StatisticLine text="all" value={total} />
-        <StatisticLine text="average" value={(good - props.bad)/total} />
-        <StatisticLine text="positive" value={good*100/total + " %"} />
-    </>
+    <table>
+        <tbody>
+            <StatisticLine text="good" value={good} />
+            <StatisticLine text="neutral" value={props.neutral} />
+            <StatisticLine text="bad" value={props.bad} />
+            <StatisticLine text="all" value={total} />
+            <StatisticLine text="average" value={(good - props.bad)/total} />
+            <StatisticLine text="positive" value={good*100/total + " %"} />
+        </tbody>
+    </table>
 
 const Button = ({func,value,text}) => <button onClick={() => func(value + 1)}>{text}</button>
 
