@@ -1,6 +1,10 @@
 import { useState } from 'react'
 
-const StatisticLine = ({text, value}) => <tr><td>{text} {value}</td></tr>
+const StatisticLine = ({text, value}) => 
+    <tr>
+        <td>{text}</td>
+        <td>{value}</td>
+    </tr>
 
 const Statistics = ({good, total, ...props}) =>
     <table>
