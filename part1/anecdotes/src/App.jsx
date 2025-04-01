@@ -39,8 +39,10 @@ const App = () => {
                 maxVote = votes[i]
             }
         }
-        return(anecdote)
+        return({anecdote,maxVote})
     }
+
+    const max = mostVotes()
 
   return (
     <div>
@@ -50,7 +52,8 @@ const App = () => {
             <button onClick={handleVote}>vote</button>
             <button onClick={() => {setSelected(getRandomInt(0,7))}}>next anectdote</button><br />
             <h1>Anecdote with most votes</h1>
-            {mostVotes()}
+            {max.anecdote}<br />
+            has {max.maxVote}
     </div>
   )
 }
